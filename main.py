@@ -133,7 +133,7 @@ def update_partially_mongodb_item(item_id: str, item: ItemModel):
         return updated_item
     raise HTTPException(status_code=404, detail="Item not found")
 
-@app.delete("/{item_id}")
+@app.delete("/mongodb/items/{item_id}")
 def delete_mongodb_item(item_id: str):
     result = items_collection.find_one_and_delete({"_id": ObjectId(item_id)})  # Convert string ID to ObjectId
     if result:
